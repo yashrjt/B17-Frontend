@@ -1,0 +1,45 @@
+/* p{
+    color:red;
+} */
+
+body{
+    background-color: bisque;
+}
+#rjt-one{
+    color:red;
+    width:1000px;
+    height:100px;
+    border: 1px solid black;
+    margin:200px;
+    padding:50px;
+}
+
+#rjt-two{
+    border: 1px solid black;
+    text-align: center;
+}
+.rjt{
+    font-family: cursive;
+    font-size: 50px;
+}
+
+li{
+    list-style-type: upper-roman;
+    list-style: none;
+}
+
+
+table,td,th,tr{
+border:1px solid black;
+border-collapse: collapse;
+}
+
+
+.trow{
+    padding:20px;
+}
+
+
+img{
+    border-radius: 50%;
+}

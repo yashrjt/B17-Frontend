@@ -1,0 +1,19 @@
+    1.html5 vs html4
+`   ---HYPER TEXT PROGRAMMING LANGUAGE
+    ---html5 introduced semantic(meaningful) elements
+    ---few elements got deprecated.
+    ---few API's were introduced
+
+    2.css3--cascading style sheet 
+            CSS FLEX---unidirectional
+            CSS GRID---bidirectional
+
+        template/wireframes/protoypes
+            Invision
+
+    3.Bootstrap (css framework)
+    4.Javascript
+    5.jquery(javascript library)
+    6.form validation,submission--jquery
+    7.AJAX
+    8.Angular 7(Js framework) /ReactJs /Vue Js
