@@ -1,0 +1,28 @@
+.grid-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 200px 600px 200px;
+    grid-template-rows: 50px 70px 50px 70px 300px 70px 70px;
+    grid-gap:5px;
+
+    text-align: center;
+}
+
+.grid-container div {
+    background-color: coral;
+}
+
+#header, #path, #docktop, #dockbottom, #footer{
+    grid-column: 1/span 3;
+}
+
+#dockleft, #dockright {
+    grid-row: 4/span 2;
+}
+#dockright{
+    grid-column:3;
+}
+#error,#content{
+    grid-column:2 / span 1;
+}

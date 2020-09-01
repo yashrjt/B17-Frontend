@@ -5,13 +5,22 @@
     ---few API's were introduced
 
     2.css3--cascading style sheet 
-            CSS FLEX---unidirectional
+            CSS FLEX---unidirectional( x-axis horizonatlly) or (yaxis vertically)
+
+                justify-content
+                align-items
+
             CSS GRID---bidirectional
 
+                justify-content,align-content
+                align-items,justify-items
         template/wireframes/protoypes
             Invision
 
-    3.Bootstrap (css framework)
+
+            CSS Media Queries---used to create Responsive Web Design
+                        ---uses breakpoints
+    3.Bootstrap 4 (css framework)
     4.Javascript
     5.jquery(javascript library)
     6.form validation,submission--jquery

@@ -1,0 +1,31 @@
+<div class="grid">
+<header>Header</header>
+<aside>Aside</aside>
+<article>Article</article>
+<footer>Footer</footer>
+
+</div>
+
+.grid{
+    display: grid;
+    grid-template-rows: 50px 200px 50px;
+    grid-template-columns: 75px 200px;
+    grid-gap:10px;
+}
+header{
+    grid-column: 1/span 2;
+    background-color: bisque;
+}
+
+article{
+background-color: olive;
+}
+
+aside{
+    background-color: purple;
+}
+
+footer{
+    grid-column: 1/span 2;
+ background-color: orange;
+}

@@ -9,13 +9,67 @@ font-size: 20px;
     background-color: olive;
     height:70px;
     display: flex;
+    /* If ur axis is x-axis or horizontally then justify-content property used for horizontal alignment and align-items used for vertical aligmnet */
     justify-content: space-around;
+    align-items: center;
+
+}
+
+#section1,#section2,#section4{
+    border:solid 1px black;
+}
+#section1,#section2{
+    height:300px;
+   
+}
+#section3,#section4{
+    height:200px;
+  
+}
+#section4{ 
+      /* If ur axis is y-axis or vertically then justify-content property used for vertical alignment and align-items used for horizontal aligmnet */
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
     align-items: center;
 }
 
-article{
-    width:500px;
-    border:solid 1px black;
+#section2{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.services{
+    width:1000px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.services-types{
     display: flex;
-    justify-content: space-evenly
+    justify-content: space-around;
+}
+.services-type-one,.services-type-two,.services-type-three,.services-type-four{
+    width:200px;
+    margin-right:20px;
+}
+.payment-description{
+    text-align: center;
+   margin-bottom: 25px;
+}
+.payment-type{
+width: 500px;
+ display: flex;
+justify-content: space-evenly;
+}
+#section3{
+    background-color: orange;
+    color:#ffffff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.footer{
+    height:50px;
+  
 }
