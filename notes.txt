@@ -22,6 +22,14 @@
                         ---uses breakpoints
     3.Bootstrap 4 (css framework)
     4.Javascript
+        ---browser and NodeJs
+        ---V8 engine
+        --Programming language..
+        client-side/frontend---
+        server-side/backend---
+        ES5 vserion
+            ---ES ECMASCRIPT
+        ES6 version
     5.jquery(javascript library)
     6.form validation,submission--jquery
     7.AJAX
