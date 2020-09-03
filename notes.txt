@@ -33,4 +33,16 @@
     5.jquery(javascript library)
     6.form validation,submission--jquery
     7.AJAX
+     --two major data interchange format json,xml
+    --reload part of a web page without refreshing the whole page
+    --http calls to the server
+    javascript----XMLHttpRequest
+        --fetch api(ES6 feature)
+    jquery
+    $ajax()
+        Asynchronous Javascript And Xml
     8.Angular 7(Js framework) /ReactJs /Vue Js
+
+
+
+   

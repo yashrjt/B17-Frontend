@@ -247,6 +247,25 @@ staffDeepCopy['address']['city']='San Francisco';
 console.log("//ten -> staffDeepCopy", staffDeepCopy)
 console.log("//ten -> staff", staff);
 
+//Promise---it is an object .It could be resolved,pending,rejected
+
+
+let promise=new Promise((resolve,rejected)=>{
+    setTimeout(()=>{
+       rejected('call fail');
+    },5000)
+   
+})
+
+promise
+.then((res)=>{
+console.log("//ten -> res", res)
+
+})
+.catch((err)=>{
+console.log("//ten -> err", err)
+    
+})
 
 // DOM & EVENTS
 
@@ -275,7 +294,9 @@ document.querySelector('#btn').addEventListener('click',(e)=>{
 document.querySelector('#rem').remove();
 
 let paraElement=document.createElement('p');
+
 paraElement.innerHTML='This element created after clicking the button';
+paraElement.setAttribute('id','para');
 document.body.appendChild(paraElement);
 console.log("//ten -> paraElement", paraElement)
 })
@@ -334,3 +355,5 @@ document.querySelector('#empParent').addEventListener('click',(e)=>{
        e.preventDefault();
         })
     
+
+        ///Create an img,take a src ,width,htight,alt
