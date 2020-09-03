@@ -127,6 +127,9 @@ var addDataCopy=function(x,y){
 const resultOne=addDataCopy(20,30);
 console.log("resultOne", resultOne)
 
+
+//callback functions---a function passed as a paramter to another function
+
 //scopes
 //global scope,lexical scope,local scope
 
@@ -242,4 +245,92 @@ let staffDeepCopy=JSON.parse(JSON.stringify(staff));
 staffDeepCopy['address']['city']='San Francisco';
 
 console.log("//ten -> staffDeepCopy", staffDeepCopy)
-console.log("//ten -> staff", staff)
+console.log("//ten -> staff", staff);
+
+
+// DOM & EVENTS
+
+
+
+let para=document.getElementsByTagName('p')
+console.log("para", para[0]['textContent']);
+
+let city=document.getElementById('city');
+console.log("//ten -> city", city.innerHTML)
+
+let stateVar=document.getElementsByClassName('state');
+console.log("//ten -> state", stateVar);
+
+let paraQuery=document.querySelector('#city');
+console.log("//ten -> paraQuery", paraQuery.innerHTML)
+
+let stateVarQuery=document.querySelectorAll('.state');
+console.log("//ten -> state", stateVarQuery);
+
+
+//events event object
+document.querySelector('#btn').addEventListener('click',(e)=>{
+//    console.log('you clicked the button') 
+//    console.log(e.target);
+document.querySelector('#rem').remove();
+
+let paraElement=document.createElement('p');
+paraElement.innerHTML='This element created after clicking the button';
+document.body.appendChild(paraElement);
+console.log("//ten -> paraElement", paraElement)
+})
+
+//event delegation
+
+
+// document.querySelector('#john').addEventListener('click',(e)=>{
+// console.log("//ten -> e", e.target.innerHTML)
+// })
+
+
+// document.querySelector('#dave').addEventListener('click',(e)=>{
+//     console.log("//ten -> e", e.target.innerHTML)
+//     })
+
+    
+// document.querySelector('#daniel').addEventListener('click',(e)=>{
+//     console.log("//ten -> e", e.target.innerHTML)
+//     })
+
+    
+// document.querySelector('#moses').addEventListener('click',(e)=>{
+//     console.log("//ten -> e", e.target.innerHTML)
+//     })
+    
+
+//console.log(document.querySelectorAll('.empName'));
+//let empNames=document.querySelectorAll('.empName')
+
+
+// for(let i=0;i<empNames.length;i++){
+//     console.log("//ten -> empNames", empNames[i])
+//     empNames[i].addEventListener('click',(e)=>{
+//     console.log("//ten -> e", e.target.innerHTML)
+//     })
+// }
+
+
+  //stop propogation
+  document.querySelector('#daniel').addEventListener('click',(e)=>{
+    e.stopPropagation();
+    })
+
+//event bubbling--events bubble from child to parent
+//event capturing--events bubble from parent to child
+
+document.querySelector('#empParent').addEventListener('click',(e)=>{
+    console.log("//ten -> e", e.target.innerHTML)
+    })
+
+
+    //prevent default action
+
+    document.querySelector('#anchor').addEventListener('click',(e)=>{
+       e.preventDefault();
+        })
+    
