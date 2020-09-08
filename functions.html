@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id="john">Hello this is john</p>
+    <script>
+        //callback functions
+        //First class functions---a function which returns another function/ a function which takes another functionas a argument
+        //closure---inner function able to access outer function variable even after the outer function ahs returned
+        function getTotalCompensation(){
+            //lexical scope
+            var basesalary=5000;
+            return function(bonus){
+                    return basesalary+bonus;
+            }
+        }
+
+     document.querySelector('#john').addEventListener('click',printJohn);
+
+
+     function printJohn(){
+        console.log('john got printed')
+        }
+
+       
+        var emp={
+                    name:'John',
+                    age:35
+                }
+          var empOne={
+            name:'DAVE',
+                    age:30
+          }      
+          //constructor function ES5
+          function Employee(name,age){
+              this.name=name;
+              this.age=age;
+              this.greet=function(){
+                  console.log(`hello this is ${this.name}`);
+              }
+          }
+
+          let daveObj=new Employee('dave',23);
+          daveObj.greet();
+          console.log("daveObj", daveObj)
+          let janeObj=new Employee('jane',23);
+          janeObj.greet();
+          console.log("janeObj", janeObj);
+          
+
+          //IIFE--Immediately invoked function expression,function level scope
+          
+
+          (function(){
+              var z='secret varibale';
+             
+             console.log('hello')
+          })();
+
+          console.log("z", z)
+          //ES6
+          class EmployeeSample{
+
+          }
+
+    </script>
+</body>
+</html>
