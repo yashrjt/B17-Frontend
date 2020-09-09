@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    //     setTimeout(function(){
+    //         console.log('i got executed after 6ms')
+    //     },6000)
+    // console.log(this);
+
+
+    function empSalary(ename){
+        console.log(this.ename);
+    }
+    //simple function call
+    empSalary('john');
+
+
+    let employee={
+        empname:'john',
+        age:30,
+        employeeSalary:function(){
+            return `hello this is ${this.empname}`
+           // console.log(`hello this is ${this.empname}`);
+        }
+    }
+
+
+   let sal= employee.employeeSalary();
+   console.log("sal", sal)
+
+//     let salone= employee.employeeSalary;
+//     //simple function
+//    console.log("sal", salone())
+
+
+   //es6 way
+
+   let employeecopy={
+        empnamecopy:'john',
+        agecopy:30,
+        //arrow functions bound to lexical scope
+        employeeSalarycopy:()=>{
+            return `hello this is ${this.empnamecopy}`
+           // console.log(`hello this is ${this.empname}`);
+        }
+    }
+
+    let salcopy= employeecopy.employeeSalarycopy();
+    console.log("salcopy", salcopy)
+
+   //es5
+    function Service(name){
+        var self=this
+        this.name=name;
+        this.greetPerson=function(){
+            console.log(this);
+        }
+        this.greetPersonAsync=function(){
+            setTimeout(function(){
+                console.log(self);
+            },5000)
+        }
+
+        // this.greetPersonAsync=function(){
+        //     setTimeout(()=>{
+        //         console.log(this);
+        //     },5000)
+        // }
+
+    }
+
+
+    // var x=function(){
+
+    // }
+
+    // var y=()=>{
+
+    // }
+
+    let serviceObj=new Service('Emily');
+    serviceObj.greetPerson();
+
+    let serviceObjCopy=new Service('George');
+    serviceObjCopy.greetPerson();
+
+    serviceObjCopy.greetPersonAsync();
+   //es6
+
+   class Person{
+       constructor(personname,personsalary){
+           this.personname=personname;
+           this.personsalary=personsalary;
+       }
+
+       personDetails(){
+           return `Hello this is ${this.personname}.Mysalary is ${this.personsalary}`
+       }
+   }
+
+
+   let personObj=new Person('Kelly',9000);
+   console.log(personObj.personDetails());
+    </script>
+</body>
+</html>
