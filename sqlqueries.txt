@@ -1,0 +1,163 @@
+
+--DDL COMMANDS
+create table employee(EmpId int,EmpName varchar(20),EmpCity varchar(20));
+
+--add column
+alter table employee add EmpSalary int;
+
+--delete column
+alter table employee drop column EmpSalary;
+alter table employee drop column EmpPay;
+--chnage column name
+alter table employee rename column EmpSalary to EmpPay;
+
+--change the datatype of column
+
+alter table employee modify EmpPay float;
+
+--change table name
+
+alter table employeenew rename to employee;
+
+--drops the record and structure of the table
+drop table employee;
+
+--drops only the records of the table
+truncate table employee;
+
+
+--DQL COMMAND
+
+select * from employee;
+
+
+--DML COMMANDS
+insert into employee(EmpId,EmpName,EmpCity) values(1001,'John','Atlanta');
+insert into employee(EmpId,EmpName,EmpCity) values(1002,'David','NYC');
+insert into employee(EmpId,EmpName,EmpCity) values(1003,'Kenny','San Diego');
+insert into employee(EmpId,EmpName,EmpCity) values(1004,'Andrew','Miami');
+insert into employee(EmpId,EmpName,EmpCity) values(1005,'Mike','Columbus');
+
+insert into employee(EmpId,EmpName) values(1006,'Johnanthon');
+insert into employee(EmpId,EmpName,EmpCity) values(1007,'Antony','Miami');
+insert into employee(EmpId,EmpName,EmpCity) values(1008,'Gerrit','Columbus');
+insert into employee(EmpId,EmpName,EmpCity) values(1008,'Gerrit','Columbus');
+delete  from employee where EmpId=1005;
+
+
+update employee set EmpCity='Miami' where EmpId=1004;
+
+
+update employee set EmpSalary=8000 where EmpId=1001;
+update employee set EmpSalary=7500 where EmpId=1002;
+update employee set EmpSalary=6800 where EmpId=1003;
+update employee set EmpSalary=10000 where EmpId=1004;
+update employee set EmpSalary=9300 where EmpId=1005;
+update employee set EmpSalary=8400 where EmpId=1006;
+
+--operators
+
+--fetch the employee list who li=ves in the empcity atlanta
+
+
+select * from employee where EmpCity in ('Atlanta','NYC');
+select * from employee where EmpCity not in ('Atlanta','NYC');
+
+select * from employee where EmpCity='Atlanta' or EmpCity='NYC';
+
+
+select * from employee where EmpCity is Null;
+
+
+select * from employee where EmpCity is Not Null;
+
+select * from employee where EmpId between  1002 and 1005; 
+select * from employee where EmpId not between  1002 and 1005; 
+
+
+--get the list of employees whose salary is greater than 6000
+select * from employee where EmpSalary>=8000;
+
+
+
+
+---Aggregate functions   Min,Max,Sum,Avg,Count
+
+
+---get the the lowest salary
+
+select min(EmpSalary) from employee;
+
+---get the  the highest salary
+
+select max(EmpSalary) from employee;
+
+
+---get the average salary of employee
+
+select avg(EmpSalary) from employee;
+
+
+---get the sum of  salary of employee
+
+select sum(EmpSalary) from employee;
+
+
+--get the total number of employees in the company
+select count(*) from employee;
+
+
+
+--distinct(unique)
+
+
+select EmpCity from employee;
+select distinct EmpCity from employee;
+
+--order by (sort)
+select * from employee;
+
+
+select * from employee order by EmpSalary;
+
+select * from employee  order by  EmpSalary desc;
+
+
+--group by
+
+
+--get the number of employees in each city
+
+select EmpCity,count(*) as TotalEmp from employee group by EmpCity having  count(*)>=2;
+
+--get the number of employees in each city where count greater than or equal to 2
+select EmpCity,count(*) as TotalEmp from employee group by EmpCity having  count(*)>=2;
+
+
+--Nested query
+
+--get the details of the employee who has the minimum salary
+
+select * from employee where EmpSalary=(select min(EmpSalary) from employee);
+
+
+--Primary keys
+
+alter table employee add constraint emp_primnarykey  primary key(EmpId);
+
+
+create table empDepartmentDetail(empId int,deptname varchar(20),deptid varchar(20),constraint emp_deptid primary key(deptid));
+
+
+alter table empDepartmentDetail add constraint emp_foriegnkey  foreign key(empId) REFERENCES employee(EmpId);
+
+
+alter table empDepartmentDetail modify deptid int;
+
+insert into empDepartmentDetail(empId,deptname,deptid) values(1001,'HR',5555);
+insert into empDepartmentDetail(empId,deptname,deptid) values(1002,'IT',4444);
+insert into empDepartmentDetail(empId,deptname,deptid) values(1003,'Accounts',2222);
+insert into empDepartmentDetail(empId,deptname,deptid) values(1004,'MAintenance',1111);
+insert into empDepartmentDetail(empId,deptname,deptid) values(1005,'Gaming',3333);
+insert into empDepartmentDetail(empId,deptname,deptid) values(2001,'Gaming',6666);
+select * from empDepartmentDetail;
