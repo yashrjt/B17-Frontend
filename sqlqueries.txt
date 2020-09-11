@@ -161,3 +161,5 @@ insert into empDepartmentDetail(empId,deptname,deptid) values(1004,'MAintenance'
 insert into empDepartmentDetail(empId,deptname,deptid) values(1005,'Gaming',3333);
 insert into empDepartmentDetail(empId,deptname,deptid) values(2001,'Gaming',6666);
 select * from empDepartmentDetail;
+
+

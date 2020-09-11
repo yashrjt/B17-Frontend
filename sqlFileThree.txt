@@ -1,0 +1,126 @@
+SALESPEOPLE-TABLE
+
+
+SNUM SNAME               CITY                   COMM
+1001 Peel                 London             .12
+1002 Serres               San Jose               .13
+    1004 Motika               London             .11
+    1007 Rafkin               Barcelona           .15
+1003 Axelrod               New york           .1
+
+
+create table SalesPeople(snum number,sname varchar(20),city varchar(20),comm number);
+
+insert into SalesPeople(snum,sname,city,comm)values (1001,'Peel','London',12);
+insert into SalesPeople(snum,sname,city,comm)values (1002,'Serres','San Jose',13);
+insert into SalesPeople(snum,sname,city,comm)values (104,'Motika','London',11);
+insert into SalesPeople(snum,sname,city,comm)values (1007,'Rafkinl','Barcelona',15);
+insert into SalesPeople(snum,sname,city,comm)values (1003,'Axelrod','New York',1);
+insert into SalesPeople(snum,sname,city,comm)values (NULL,'Axelrod','New York',1);
+
+
+
+CUST- TABLE
+
+CNUM CNAME       CITY           RATING      SNUM
+ 2001 Hoffman     London           100       1001
+ 2002 Giovanne   Rome             200       1003
+ 2003 Liu         San Jose         300       1002
+ 2004 Grass       Brelin            100       1002
+ 2006 Clemens     London           300       1007
+ 2007 Pereira     Rome             100       1004
+
+
+create table cust (cnum int,cname varchar(10),city varchar(10),rating int,snum int);
+
+insert into cust(cnum,cname,city,rating,snum) VALUES (2001,'Hoffman','London',100,1001);
+insert into cust(cnum,cname,city,rating,snum) VALUES (2002,'Giovanne','Rome',200,1003);
+insert into cust(cnum,cname,city,rating,snum) VALUES (2003,'Liu','San Jose',300,1002);
+insert into cust(cnum,cname,city,rating,snum) VALUES (2004,'Grass','Berlin',100,1002);
+insert into cust(cnum,cname,city,rating,snum) VALUES (2005,'Clemens','London',300,1007);
+insert into cust(cnum,cname,city,rating,snum) VALUES (2006,'Pereira','London',100,1004);
+
+select * from cust;
+
+
+
+
+ORDERS- TABLE
+
+ONUM    AMT ODATE           CNUM        SNUM  
+3001        18.69          03-OCT-94       2008       1007
+3003      767.19          03-OCT-94       2001       1001
+3002    1900.10 03-OCT-94       2007       1004
+3005    5160.45 03-OCT-94       2003       1002
+3006    1098.16 04-OCT-94       2008       1007
+3009    1713.23 04-OCT-94       2002       1003
+3007        75.75         05-OCT-94       2004       1002
+3008    4723.00 05-OCT-94       2006       1001
+3010    1309.95 06-OCT-94       2004       1002
+3011    9891.88 06-OCT-94       2006       1001
+
+select * from Orders;
+
+create table Orders(onum number,amt number,odate date,cnum number,snum number);
+
+insert into orders(onum,amt,odate,cnum,snum) values(3001,18.69,'03-OCT-94',2008,1007);
+
+insert into orders(onum,amt,odate,cnum,snum) values(3003,767.19,'03/oct/94',2001,1001);
+
+insert into orders(onum,amt,odate,cnum,snum) values(3002,1900.10,'03/October/1994',2007,1004);
+
+insert into orders(onum,amt,odate,cnum,snum) values(3005 , 5160.45 ,' 03-OCT-94'    ,   2003   ,   1002);
+
+insert into orders(onum,amt,odate,cnum,snum) values(3006  ,  1098.16 ,'04-OCT-94  ',     2008 ,     1007);
+
+insert into orders(onum,amt,odate,cnum,snum) values(3009 ,   1713.23 ,' 04-OCT-94   ',   2002     , 1003
+);
+insert into orders(onum,amt,odate,cnum,snum) values(3007     ,   75.75   ,      '05-OCT-94',      2004   ,   1002);
+
+insert into orders(onum,amt,odate,cnum,snum) values(3008    ,4723.00, '05-OCT-94 '    , 2006  ,     1001
+);
+
+insert into orders(onum,amt,odate,cnum,snum) values(3010  ,  1309.95 ,' 06-OCT-94',       2004    ,   1002
+);
+
+insert into orders(onum,amt,odate,cnum,snum) values(3011 ,   9891.88 , '06-OCT-94  '   , 2006   ,   1001
+);
+
+
+Queries
+ --Largest order taken by each salesperson, datewise.
+
+--select max(Amt) from orders;
+
+select max(Amt),snum from orders group by snum;
+
+
+
+--Largest order taken by each salesperson with order value more than $3000.
+
+select max(Amt),snum from orders group by snum having max(Amt)>3000;
+
+--Which day had the hightest total amount ordered.
+
+select odate,amt from orders where amt=(select max(amt) from orders);
+
+--Count the number of unique non NULL city values in customers table.
+
+select count(distinct city) from cust;
+
+
+--Select each customer’s smallest order.
+
+select min(Amt),cnum from orders group by cnum;
+
+--All orders that are greater than the average for Oct 4.
+
+select onum,amt,odate from orders where amt>(select avg(amt) from orders where odate='03-OCT-94');
+
+--Display the totals of orders for each day and place the results in descending order.
+
+select count(onum),odate from orders group by odate order by odate;
+
+--Find salespeople who serve only one customer.
+
+select snum,count(distinct cnum ) from orders group by snum;

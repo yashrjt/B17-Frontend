@@ -357,3 +357,4 @@ document.querySelector('#empParent').addEventListener('click',(e)=>{
     
 
         ///Create an img,take a src ,width,htight,alt
+      
