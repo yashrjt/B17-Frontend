@@ -1,0 +1,50 @@
+select * from dual;
+
+---functions nvl(arg1,arg2)
+
+
+insert into staff(staffid,staffname)  values(staff_seqeunce.NEXTVAL,'John');
+insert into staff(staffid,staffname)  values(staff_seqeunce.NEXTVAL,'David');
+insert into staff(staffid,staffname)  values(staff_seqeunce.NEXTVAL,'JAlex');
+insert into staff(staffid)  values(staff_seqeunce.NEXTVAL);
+
+select staffid,nvl(staffname,'Anonymous') from staff;
+
+--CONVERSION FUNCTIONS
+
+--number functions
+
+select trunc(135.890)   from dual;
+
+select ceil(135.890)   from dual;
+
+select power(2,3)   from dual;
+
+
+--character fucntions
+
+select lower('HELLO') from  dual;
+
+select upper('hello') from  dual;
+
+select length('hello') from  dual;
+
+select concat('hello ','world')  from dual;
+
+
+--date 
+select sysdate from dual;
+
+select add_months(sysdate,10) from dual;
+
+
+select extract(year from sysdate) from dual;
+
+select months_between('14-JUL-21',sysdate) from dual;
+
+
+select current_timestamp from dual;
+
+
+--to_date,to_timestamp
+

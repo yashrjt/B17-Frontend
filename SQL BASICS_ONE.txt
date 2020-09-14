@@ -163,3 +163,10 @@ insert into empDepartmentDetail(empId,deptname,deptid) values(2001,'Gaming',6666
 select * from empDepartmentDetail;
 
 
+
+--schema---collection of database objects
+
+
+
+
+

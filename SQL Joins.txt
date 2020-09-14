@@ -34,3 +34,72 @@ INSERT INTO employees VALUES (7876,'ADAMS','CLERK',7788,to_date('13-JUL-87', 'dd
 INSERT INTO employees VALUES (7900,'JAMES','CLERK',7698,to_date('3-12-1981','dd-mm-yyyy'),950,NULL,30);
 INSERT INTO employees VALUES (7902,'FORD','ANALYST',7566,to_date('3-12-1981','dd-mm-yyyy'),3000,NULL,20);
 INSERT INTO employees VALUES (7934,'MILLER','CLERK',7782,to_date('23-1-1982','dd-mm-yyyy'),1300,NULL,10);
+
+
+//Joins
+--ANSI version, non-ANSI version
+
+Inner Join,Left Outer Join,Right Outer Join, FUll Outer Join
+
+
+
+
+
+select * from departments;
+
+
+select * from employees;
+
+--inner join
+
+--ansi
+
+select d.department_name,d.location,e.employee_name,e.salary from departments d JOIN employees e on d.department_id=e.department_id;
+
+
+
+--non ansi
+
+select department_name,location,employee_name,salary from departments , employees  where  departments.department_id=employees.department_id;
+
+
+
+--left outer join
+--ansi
+
+select d.department_name,d.location,e.employee_name,e.salary from departments d  left outer JOIN employees e on d.department_id=e.department_id;
+
+
+
+--non ansi
+
+select department_name,location,employee_name,salary from departments , employees  where  departments.department_id=employees.department_id(+);
+
+
+--right outer join
+--ansi
+
+select d.department_name,d.location,e.employee_name,e.salary from departments d  right outer JOIN employees e on d.department_id=e.department_id;
+
+
+
+--non ansi
+
+select department_name,location,employee_name,salary from departments , employees  where  departments.department_id(+)=employees.department_id;
+
+
+
+--full outer join
+--ansi
+
+select d.department_name,d.location,e.employee_name,e.salary from departments d  full outer JOIN employees e on d.department_id=e.department_id;
+
+
+
+--non ansi
+
+select department_name,location,employee_name,salary from departments , employees  where  departments.department_id(+)=employees.department_id
+union all
+select department_name,location,employee_name,salary from departments , employees  where  departments.department_id=employees.department_id(+);
+
+

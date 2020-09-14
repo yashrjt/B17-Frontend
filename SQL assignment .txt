@@ -1,3 +1,4 @@
+PART 1
 Create the following tables and insert few records each.
 Use sequence for EmpNo,MngNo,DeptNo,LocNo columns…
 1.Emp (empno(PK),empname,hire_date, mgrno(FK),  job, salary, comm.,deptno(FK))
@@ -10,15 +11,20 @@ grade--A,B,C
 1.Write a query to display the emp  name, department number, and department name for all employees.
 2.Write a query to display the employee name, department name,  and city of all employees who earn a commission.
 3.Write a query to display the emp name, job, department number, and department name for all employees who work in Toronto.
-4.Display the employee name and employee number along with their manager’s name and salary. Label the columns Employee, Emp#, Manager, and Salary, respectively.
+4.Display the employee name and employee number ,salary along with their manager’s name . Label the columns Employee, Emp#, Manager, and Salary, respectively.
 4 b: Order the results by the salary.
 5.Create a query that displays employee names who have the same salary grade.
 6.Create a query that displays the Employee name, job, department name, salary grade for all employees.
  
 7.Create a query to display the name and hire date of any employee hired after employee Davis.
  
-8.Display the names and hire dates for all employees who were hired before their managers, along with  their manager’s names and hire dates. Label the columns Employee, Emp Hired, Manager, and Mgr Hired, respectively.
+8.Display the names and hire dates for all employees who were hired before their managers, along with  their manager’s names and hire dates.
+ Label the columns Employee, Emp Hired, Manager, and Mgr Hired, respectively.
  
+ 
+
+
+PART 2
 Create books table —columns bookid(has to be a sequence starting from 1050,primary key), book_name,book_author
 Create lendDetails table——columns  bookId(foreign key), person_id(foreign key),date_taken,expected_return_date,actual_return_date
 Create Person table—person id(primary key),book_id(foreign key),PenaltyCharges number

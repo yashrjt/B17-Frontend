@@ -124,3 +124,28 @@ select count(onum),odate from orders group by odate order by odate;
 --Find salespeople who serve only one customer.
 
 select snum,count(distinct cnum ) from orders group by snum;
+
+--union
+
+select city from salespeople union select city from cust;
+
+
+
+--union all
+select city from salespeople union all select city from cust;
+
+
+
+---sequence
+create table staff(staffid int,staffname varchar(20));
+
+
+create sequence staff_seqeunce start with 100 increment by 5 minvalue 100  maxvalue 1000000;
+
+
+insert into staff(staffid,staffname)  values(staff_seqeunce.NEXTVAL,'John');
+insert into staff(staffid,staffname)  values(staff_seqeunce.NEXTVAL,'David');
+insert into staff(staffid,staffname)  values(staff_seqeunce.NEXTVAL,'JAlex');
+
+
+select * from staff;
