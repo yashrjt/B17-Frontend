@@ -1,0 +1,137 @@
+
+create table customer (
+  customer_id     NUMBER,
+  email_address   varchar2(255 char) not null,
+  full_name       varchar2(255 char) not null,
+  constraint customerid_primaryKey  primary key(customer_id));
+ 
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (1,'tammy.bryant@internalmail','Tammy Bryant');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (2,'roy.white@internalmail','Roy White');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (3,'gary.jenkins@internalmail','Gary Jenkins');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (4,'victor.morris@internalmail','Victor Morris');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (5,'beverly.hughes@internalmail','Beverly Hughes');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (6,'evelyn.torres@internalmail','Evelyn Torres');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (7,'carl.lee@internalmail','Carl Lee');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (8,'douglas.flores@internalmail','Douglas Flores');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (9,'norma.robinson@internalmail','Norma Robinson');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (10,'gregory.sanchez@internalmail','Gregory Sanchez');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (11,'judy.evans@internalmail','Judy Evans');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (12,'jean.patterson@internalmail','Jean Patterson');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (13,'michelle.ramirez@internalmail','Michelle Ramirez');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (14,'elizabeth.martinez@internalmail','Elizabeth Martinez');
+  insert into customer (CUSTOMER_ID,EMAIL_ADDRESS,FULL_NAME) values (15,'walter.rogers@internalmail','Walter Rogers');
+ 
+ 
+select * from customer;
+ 
+ 
+create table staff (
+  staff_id     NUMBER,
+  email_address   varchar2(255 char) not null,
+  full_name       varchar2(255 char) not null,
+  constraint staffid_primaryKey  primary key(staff_id));
+ 
+  insert into staff (staff_ID,EMAIL_ADDRESS,FULL_NAME) values (1,'tonyt@internalmail','Tony Varghese');
+  insert into staff (staff_ID,EMAIL_ADDRESS,FULL_NAME) values (2,'ray@internalmail','Ray Thomas');
+  insert into staff (staff_ID,EMAIL_ADDRESS,FULL_NAME) values (3,'gerrit@internalmail','Gerrit James');
+  insert into staff (staff_ID,EMAIL_ADDRESS,FULL_NAME) values (4,'melinda@internalmail','Malinda Victor');
+  insert into staff (staff_ID,EMAIL_ADDRESS,FULL_NAME) values (5,'kelly@internalmail','Kelly Robert');
+  insert into staff (staff_ID,EMAIL_ADDRESS,FULL_NAME) values (6,'rose@internalmail','Rose Morris');
+  
+ 
+  select * from staff;
+  
+ 
+   
+create table products (
+  product_id         number,
+  product_name       varchar2(255 char) not null,
+  unit_price         number(10,2),
+  constraint product_id_primaryKey  primary key(product_id)
+);
+
+insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (4,'Boy''s Trousers (White)',43.71  );
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (5,'Girl''s Shorts (Red)',38.28  );
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (7,'Boy''s Socks (Black)',19.58);
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (8,'Boy''s Coat (Brown)',21.16 );
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (9,'Women''s Jeans (Brown)',29.49 );
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (10,'Women''s Skirt (Red)',30.69  );
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (11,'Boy''s Shorts (Blue)',10.48  );
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (12,'Boy''s Socks (White)',12.64 );
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (13,'Boy''s Hoodie (Grey)',26.14);
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (14,'Women''s Skirt (Brown)',13.97  );
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (15,'Girl''s Coat (Blue)',13.09  );
+  insert into products (PRODUCT_ID,PRODUCT_NAME,UNIT_PRICE) values (16,'Women''s Socks (Grey)',39.89  );
+ 
+ 
+select * from products;
+ 
+ 
+create table sales_orders (
+  order_id       number,
+  order_date     date,
+  order_status   varchar2(10),
+  order_total    number,
+  customer_id    number,
+  staff_id       number,
+   constraint order_id_primaryKey  primary key(order_id),
+   CONSTRAINT customerid_foreignkey  FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+    CONSTRAINT staffid_foreignkey  FOREIGN KEY (staff_id) REFERENCES staff(staff_id));
+
+
+ 
+ 
+
+ 
+ Insert into sales_orders (ORDER_ID,ORDER_DATE,ORDER_STATUS,ORDER_TOTAL,CUSTOMER_ID,STAFF_ID) values (10001,'04-FEB-2018','CANCELLED',100.99,2,2);
+  Insert into sales_orders (ORDER_ID,ORDER_DATE,ORDER_STATUS,ORDER_TOTAL,CUSTOMER_ID,STAFF_ID) values (10002,'08-FEB-2018' ,'COMPLETE',289.5,3,1);
+  Insert into sales_orders (ORDER_ID,ORDER_DATE,ORDER_STATUS,ORDER_TOTAL,CUSTOMER_ID,STAFF_ID) values (10003,'09-FEB-2018 ','COMPLETE',328.85,5,5);
+  Insert into sales_orders (ORDER_ID,ORDER_DATE,ORDER_STATUS,ORDER_TOTAL,CUSTOMER_ID,STAFF_ID) values (10004,'10-FEB-2018 ','COMPLETE',65.80,6,3);
+  Insert into sales_orders (ORDER_ID,ORDER_DATE,ORDER_STATUS,ORDER_TOTAL,CUSTOMER_ID,STAFF_ID) values (10005,'11-FEB-2018 ','CANCELLED',89.99,4,1);
+  Insert into sales_orders (ORDER_ID,ORDER_DATE,ORDER_STATUS,ORDER_TOTAL,CUSTOMER_ID,STAFF_ID) values (10006,'13-FEB-2018 ','PENDING',75.80,4,6);
+ 
+ 
+  select * from sales_orders;
+  
+  
+create table order_details (
+  order_id                   number not null,
+  product_id                 number not null,
+  quantity                   number not null,
+  constraint composite_primaryKey  primary key(order_id,product_id),
+   CONSTRAINT  order_id_foreignkey  FOREIGN KEY ( order_id ) REFERENCES sales_orders( order_id ),
+    CONSTRAINT productid_foreignkey  FOREIGN KEY ( product_id ) REFERENCES products( product_id ));
+   
+Insert into ORDER_DETAILS (ORDER_ID,PRODUCT_ID,QUANTITY) values (10001,4,4);
+  Insert into ORDER_DETAILS (ORDER_ID,PRODUCT_ID,QUANTITY) values (10001,5,2);
+  Insert into ORDER_DETAILS (ORDER_ID,PRODUCT_ID,QUANTITY) values (10001,16,3);
+  Insert into ORDER_DETAILS (ORDER_ID,PRODUCT_ID,QUANTITY) values (10003,12,5);
+  Insert into ORDER_DETAILS (ORDER_ID,PRODUCT_ID,QUANTITY) values (10002,13,5);
+  Insert into ORDER_DETAILS (ORDER_ID,PRODUCT_ID,QUANTITY) values (10004,13,2);
+  Insert into ORDER_DETAILS (ORDER_ID,PRODUCT_ID,QUANTITY) values (10004,7,4);
+  Insert into ORDER_DETAILS (ORDER_ID,PRODUCT_ID,QUANTITY) values (10005,8,4);
+  Insert into ORDER_DETAILS (ORDER_ID,PRODUCT_ID,QUANTITY) values (10005,9,4);
+  Insert into ORDER_DETAILS (ORDER_ID,PRODUCT_ID,QUANTITY) values (10006,10,3);
+ 
+   select * from order_details;
+
+
+
+   QUESTIONS:
+
+   1.Get the customer details who were assisted by staffid=5;
+   2.How many orders have been processed by staffid=4;
+   3.List all the product names purchased by customer id=2;
+   4.What is the total order amount from all orders in the shop before  Feb 10,2018;
+   5.Get a detailed order report of customerid 5 about his orders,inlcuding odate,order id,prod id,prod name,prod unit price,product quantity purchased
+   6.Get the details of the products  whose name starts with Girl .....
+   7.Get the total number of items sold per product and  sort by prod_id.
+   8.Get the prod detail of an item which has been ordered most.
+   9.Get the details of the staff who has assisted most orders.
+   10.Get the email of the customer who has made maximum purchase(cost wise).
+   11.Get the prod details of items which customers didn't like..(may be no one ordered that!!!)
+   12.Total number of  cusotmers who haven't placed a single order
+   13.Get the unique list of email_address from both the staff and customer
+   14.What is the average amount of cost of a single product in the store sold.
+   15.Get the number of COMPLETE,PENDING,CANCELLED orders..
+
