@@ -1,0 +1,33 @@
+undefined vs not defined
+== vs ===
+Truthy ,falsy values
+!! operator 
+Data types in Js
+Hoisting
+Several methods in Js Arrays
+This keyword
+Types of scope in JS
+Shallow vs Deep clone objects
+Methods to create object in JS
+What are asynchronous calls
+typeOf operator
+instanceOf operator
+Json.parse vs Json.stringify
+strict mode in JS
+Event handling in JS
+Types of events n few examples of each category
+Event delegation
+Diff between event bubbling and capturing
+E.stoppropogation vs e.stopimmediatepropogation
+When to use e.preventdefault
+Promise vs observable
+Callback function,Anonymous functions
+What are Constructor functions
+First class functions
+IIFE
+LocalStorage vs sessionStorage
+Closure
+Es6 features
+What is AJAX
+Fetch API
+How to make Ajax calls in JS

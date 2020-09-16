@@ -1,0 +1,56 @@
+Normalization---
+method for organising data  in tables inside database
+
+cust_id,cust_email,cust_name,staff_id,staff_name,staff_email,product_id,prod_NAME,PROD_UNITPRICE,
+order_id,order_dtae,order_status,order_total,cust_id,staff_id,prod_qunatity
+
+Anomaly--
+
+
+order_id   custid    staffid  prod_id   prod-name             prod_unitprice    staff_id   cust_id
+
+1001                            1,2,5    hoody,jacket,shoes
+1002                                                                                123
+1003                                                                                            1234
+
+
+
+
+1NF
+    ---values in a cell needs to be atomic
+
+    (primary)order_id   custid    staffid  prod_id   prod-name             prod_unitprice    staff_id   cust_id
+
+1001                                             1           hoody
+1001                                            2           Jacket
+1001                                3           shoes
+1002                                                                                123
+1003                                                                                            1234
+
+
+2NF   ---no partial dependency
+
+table 1
+custid  cust_name custemail
+
+table 2
+satffid  staff_name staffemail
+
+
+table 3
+prod_id prod_name product_price
+
+
+table 4
+order_id,order_date,order_status,order_total
+prod_id,cust_id,staff_id(foriegn key)
+
+
+table 5 ---composite key(more than one column becomes a primary key) orderid+prodid primary key
+order id  prod_id       prod_qunatity
+101            1         4
+101            2         5
+
+
+
+

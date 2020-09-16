@@ -1,0 +1,26 @@
+1.what is normalization
+2.what is a composite key?
+3.what is the diff b/w primary vs foreign key
+4.Types of constraints available
+5.types of joins and explain
+5.union vs union all
+6.ddl,dcl,dml commands
+7.groupby having clause
+8.name some aggregate functions(single,multiple)
+9.distinct
+10.orderby
+11.make modifications to exisitng table using alter command
+12.drop vs truncate
+13.waht are commit,rollback ,savepoint(tcl)
+14.how to craete a sequence
+15.Comparison ,logical,mathematical operators
+
+What is the difference between procedure and function
+How to handle exception in pl/sql
+How to create custom exception
+What is a  trigger
+How many types of triggers available
+What is a cursor
+Diff betwween implicit and explicit cursor
+Lifecycle of cursor
+Datatypes in pl/sql

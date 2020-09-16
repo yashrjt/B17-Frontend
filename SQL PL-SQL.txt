@@ -1,0 +1,143 @@
+pl-sql procedural language
+
+---functions   returns data
+---procedures  does not return any data
+---triggers
+--cursors
+
+
+datatypes:
+record,rowtype
+
+---anonymous block
+
+
+--select * from employee;
+
+
+declare
+s_name varchar(20):='Alex';
+s_id int:=100;
+s_num int not null default 90;
+e_rec employee%rowtype;
+begin
+e_rec.empid:=1009;
+e_rec.empname:='Kenny';
+e_rec.empcity:='dallas';
+e_rec.empsalary:=8000;
+dbms_output.put_line(e_rec.empname);
+end;
+
+
+
+declare
+type Staff_record is record(staff_name varchar(20),staff_id int,staff_city VARCHAR(20));
+
+Holland_record Staff_record;
+begin
+
+Holland_record.staff_name:='Holland';
+Holland_record.staff_id:=101;
+Holland_record.staff_city:='Belgium';
+dbms_output.put_line(Holland_record.staff_city);
+end;
+
+
+--loops
+
+
+declare
+salgrade varchar(2):='B';
+salary int;
+begin
+case
+when salgrade='A' then
+salary:=12000;
+when salgrade='B' then
+salary:=10000;
+when salgrade='C' then
+salary:=8000;
+end case;
+dbms_output.put_line(salary);
+end;
+
+
+
+
+
+declare
+salary int:=8000;
+begin
+if salary>8000 then 
+dbms_output.put_line('Sal grade A or B');
+else if salary<=8000 then 
+dbms_output.put_line('Sal g=rade C');
+end if;
+end if;
+end;
+
+
+declare
+
+begin
+for var in 0..5 loop
+dbms_output.put_line(var);
+end loop;
+end;
+
+
+--exception
+declare
+myvar int;
+begin
+myvar:=57651432654238754329423497987986876867567857656746535434;
+end;
+
+
+declare
+myvar int;
+number_precision exception;
+PRAGMA EXCEPTION_INIT(number_precision, -6502);
+begin
+myvar:=57651432654238754329423497987986876867567857656746535434;
+exception 
+when number_precision then
+dbms_output.put_line('You have assigned a very big number');
+end;
+
+
+
+declare
+copy_empname employee.empname%type;
+begin
+select empnam into copy_empname  from employee where empid=1;
+
+exception
+when too_many_rows then
+dbms_output.put_line('multiple results');
+when others then
+dbms_output.put_line('something else wrong');
+dbms_output.put_line(sqlerrm);
+dbms_output.put_line(sqlcode);
+end;
+
+
+---Functions
+
+create or replace function get_sal_grade(empsalary employee.empsalary%type) return VARCHAR2 as 
+sal_grade varchar(2);
+begin
+if empsalary>8000 then 
+dbms_output.put_line('Sal grade A ');
+sal_grade:='B';
+else if empsalary<=8000 then 
+dbms_output.put_line('Sal g=rade C');
+sal_grade:='C';
+end if;
+end if;
+return sal_grade ;
+end;
+
+
+select empid,empname,get_sal_grade(empsalary) from employee where empid=1001;
+

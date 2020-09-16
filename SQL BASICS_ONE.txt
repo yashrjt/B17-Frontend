@@ -146,7 +146,7 @@ select * from employee where EmpSalary=(select min(EmpSalary) from employee);
 alter table employee add constraint emp_primnarykey  primary key(EmpId);
 
 
-create table empDepartmentDetail(empId int,deptname varchar(20),deptid varchar(20),constraint emp_deptid primary key(deptid));
+create table empDepartmentDetail(empId  int,deptname varchar(20),deptid varchar(20),constraint emp_deptid primary key(deptid));
 
 
 alter table empDepartmentDetail add constraint emp_foriegnkey  foreign key(empId) REFERENCES employee(EmpId);
@@ -165,6 +165,15 @@ select * from empDepartmentDetail;
 
 
 --schema---collection of database objects
+
+constraints---
+
+not Null
+unique
+primary key(not null and unique)
+foreign key
+composite key
+
 
 
 

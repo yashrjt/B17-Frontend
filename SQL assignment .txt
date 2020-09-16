@@ -2,7 +2,7 @@ PART 1
 Create the following tables and insert few records each.
 Use sequence for EmpNo,MngNo,DeptNo,LocNo columns…
 1.Emp (empno(PK),empname,hire_date, mgrno(FK),  job, salary, comm.,deptno(FK))
-2.Manager(mngno(PK),mngname)
+2.Manager(mngno(PK),mngname,mng_hire_date)
 3.Dept(deptno(Pk), deptname, locno(FK))
 4.Location (locno(PK), city)
 5.Salgrade(empno(FK),grade, salary,lowsal, hisal)
