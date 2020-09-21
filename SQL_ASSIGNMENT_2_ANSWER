@@ -1,0 +1,89 @@
+create SEQUENCE bookID
+  START WITH 1050
+  INCREMENT BY 25 MAXVALUE 10000;
+  
+create table books(
+    bookID number(4),
+    book_name VARCHAR (20),
+    book_author VARCHAR (20),
+    Primary KEY (bookID)
+);
+
+create table Person(
+    personID number(4),
+    bookID number(4),
+    penalty number (7,2),
+    Primary KEY (personID),
+    constraint FK_bookid FOREIGN KEY (bookID) REFERENCES books (bookID)
+);
+create table lendDetail(
+    bookiD number(4),
+    personiD number(4),
+    date_taken DATE,
+    expected_return_date DATE,
+    actual_return_date DATE,    
+    constraint FK_LendbookID FOREIGN KEY (bookiD) References books (bookID),
+    constraint FK_LendpersonID FOREIGN KEY (personiD) References Person (personID)
+);
+
+INSERT INTO books Values (bookID.nextval, 'Harry Potter', 'Someone Ya know');
+INSERT INTO books Values (bookID.nextval, 'DragonBorn', 'Who is she/He?');
+INSERT INTO books Values (bookID.nextval, 'Game of Throne', 'Some guy');
+INSERT INTO books Values (bookID.nextval, 'One Piece', 'Oda');
+INSERT INTO books Values (bookID.nextval, 'Naruto', 'Ninja');
+INSERT INTO books Values (bookID.nextval, 'Bleach', 'SoulReaper');
+INSERT INTO books Values (bookID.nextval, 'Kingdom', 'China');
+INSERT INTO books Values (bookID.nextval, 'Revolution', 'Somewhere');
+
+SELECT * FROM BOOKS;
+
+drop sequence PersonSequence;
+create SEQUENCE PersonSequence
+  START WITH 5000
+  INCREMENT BY 100 MAXVALUE 10000;
+  
+INSERT INTO Person values (PersonSequence.nextval, 1100, Null);
+INSERT INTO Person values (PersonSequence.nextval, 1050, Null);
+INSERT INTO Person values (PersonSequence.nextval, 1200, Null);
+INSERT INTO Person values (PersonSequence.nextval, 1075, Null);
+INSERT INTO Person values (PersonSequence.nextval, 1125, Null);
+INSERT INTO Person values (PersonSequence.nextval, 1225, Null);
+
+
+drop sequence bookID;
+create SEQUENCE bookID
+  START WITH 1050
+  INCREMENT BY 25 MAXVALUE 10000;
+
+Insert into lendDetail values (1050, 5100, '05-Sep-2020',  to_date('28-09-2020','dd-mm-yyyy'), to_date('21-09-2020','dd-mm-yyyy'));    
+Insert into lendDetail values (1075, 5100, '05-Aug-2020', null, null);         
+Insert into lendDetail values (1125, 5000, '25-Aug-2020', to_date('25-09-2020','dd-mm-yyyy'), null);  
+Insert into lendDetail values (1150, 5400,'2-Aug-2020', to_date('21-09-2020','dd-mm-yyyy'),to_date('05-10-2020','dd-mm-yyyy'));
+Insert into lendDetail values (1150, 5500, '25-July-2020', null, null);
+Insert into lendDetail values (1225, 5300, '23-Aug-2020', to_date('17-09-2020','dd-mm-yyyy'),to_date('21-09-2020','dd-mm-yyyy'));
+Insert into lendDetail values (1125, 5200, '19-July-2020', to_date('19-09-2020','dd-mm-yyyy'),null);
+Insert into lendDetail values (1225, 5500, '18-Aug-2020', to_date('29-09-2020','dd-mm-yyyy'),to_date('21-09-2020','dd-mm-yyyy'));
+
+
+
+SELECT * FROM lenddetail;
+
+
+--1.Create a query to display the month of the book_id 1100 was taken.
+select EXTRACT(month from date_taken) from lenddetail where bookID = 1100;
+
+--2.Display all the names of the books in uppercase.
+select upper(book_name) from books;
+
+--3.Dispaly the return dates of all the books. If some books were not returned yet,make todays date to be the output.
+
+select nvl(expected_return_date,sysdate) from lenddetail;
+
+--4. Write a query which would calculate penalty if any for all persons in the table .
+--Penalty is calculated who has not returned the book on expected_return _date and is calculated
+--as $2 a day.
+--Penalty = 2 * (No. of days = Current Date � Expected return date).
+update  lend_details 
+set     penalty = 2* (trunc(nvl(actual_return_date, sysdate))- trunc(expected_return_date))
+where   (actual_return_date is null and sysdate > expected_return_date) 
+        or (actual_return_date is not null and actual_return_date > expected_return_date);

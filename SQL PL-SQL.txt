@@ -1,7 +1,7 @@
 pl-sql procedural language
 
----functions   returns data
----procedures  does not return any data
+---functions   returns data mandatory
+---procedures  may or may not return any data
 ---triggers
 --cursors
 
@@ -13,7 +13,6 @@ record,rowtype
 
 
 --select * from employee;
-
 
 declare
 s_name varchar(20):='Alex';
@@ -123,7 +122,7 @@ end;
 
 
 ---Functions
-
+---returns data mandatorily
 create or replace function get_sal_grade(empsalary employee.empsalary%type) return VARCHAR2 as 
 sal_grade varchar(2);
 begin
@@ -141,3 +140,141 @@ end;
 
 select empid,empname,get_sal_grade(empsalary) from employee where empid=1001;
 
+
+
+--PROCEDURES
+--may or may not return any data
+--perform somethingin the table
+
+create or replace procedure update_emp as
+p_emp_id  employee.empid%type:=1001;
+begin
+update employee set empsalary=8500 where empid=p_emp_id;
+exception
+when others then
+dbms_output.put_line(sqlerrm);
+dbms_output.put_line(sqlcode);
+end update_emp ;
+
+
+exec update_emp;
+
+
+
+--passing In parameters
+
+create or replace procedure update_emp_city(p_emp_id IN employee.empid%type,p_emp_city IN employee.empcity%type) is
+begin
+update employee set empcity=p_emp_city where empid=p_emp_id;
+exception
+when others then
+dbms_output.put_line(sqlerrm);
+dbms_output.put_line(sqlcode);
+end update_emp_city ;
+
+
+declare
+p_emp_id employee.empid%type:=1002;
+p_emp_city employee.empcity%type:='Los Angeles';
+begin
+update_emp_city(p_emp_id ,p_emp_city);
+end;
+
+
+--passing IN/OUT paraameters
+create or replace procedure update_emp_city_copy(p_emp_id IN employee.empid%type,p_emp_city IN employee.empcity%type,p_emp_name OUT employee.empname%type) is
+begin
+update employee set empcity=p_emp_city where empid=p_emp_id RETURNING empname into p_emp_name;
+exception
+when others then
+dbms_output.put_line(sqlerrm);
+dbms_output.put_line(sqlcode);
+end update_emp_city_copy ;
+
+
+declare
+p_emp_id employee.empid%type:=1003;
+p_emp_city employee.empcity%type:='Cleveland';
+p_emp_name employee.empname%type;
+begin
+update_emp_city_copy(p_emp_id ,p_emp_city,p_emp_name);
+dbms_output.put_line(p_emp_name);
+end;
+
+
+
+--cursors
+-pointer to the memory area/context area
+
+--implicit cursor,explicit cursor
+--SQL%FOUND
+--SQL%NOTFOUND
+--SQL%ISOPEN
+--SQL%ROWCOUNT
+
+
+--triggers
+
+--dml ,ddl commands
+
+System events--
+server errors
+dd startup/shutdown
+user logsin/logsoff 
+
+
+
+statement level(table level)
+row level
+
+---TRIGGERS
+
+---statement level triggers(table level)
+create or replace trigger emp_before_trigger
+before update on employee
+
+begin
+dbms_output.put_line('Emp table is going to be updated');
+end;
+
+
+create or replace trigger emp_after_trigger
+after update on employee
+
+begin
+dbms_output.put_line('Emp table has been updated');
+end;
+
+
+update employee set empcity='London' where empid=1005;
+update employee set empcity='Scotland' where empid=1006;
+
+
+
+---row level triggers
+
+create or replace trigger emp_before_row_trigger
+before update on employee
+for each row
+begin
+dbms_output.put_line('Emp table row is going to be updated');
+end;
+
+
+create or replace trigger emp_after_row_trigger
+after update on employee
+for each row
+begin
+dbms_output.put_line('Emp table  row has been updated');
+end;
+
+
+
+update employee set empcity='Houston' where empid=1007;
+update employee set empcity='Blvd' where empid=1008;
+
+
+alter trigger emp_after_row_trigger disable;
+
+
+drop trigger emp_after_row_trigger;

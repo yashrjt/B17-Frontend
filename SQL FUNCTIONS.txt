@@ -48,3 +48,11 @@ select current_timestamp from dual;
 
 --to_date,to_timestamp
 
+Misc function--
+---nvl  function  nvl(exp,replaceexpr)
+
+--nvl2 function  nvl2(expr1,expr2,expr3)
+
+--nullif function  nullif(expr1,expr2)
+
+--case

@@ -1,0 +1,58 @@
+--1.Get the customer details who were assisted by staffid=5;
+
+select      c.customer_id, c.email_address  , c.full_name from        sales_orders o inner join  customer c on c.customer_id = o.customer_id where       o.staff_id = 5;
+
+--2.How many orders have been processed by staffid=4;
+select      count(*) from        sales_orders group by    staff_id having    staff_id = 4;
+
+-- 3.List all the product names purchased by customer id=2;
+select p.product_name from order_details od
+    inner join products p on od.product_id = p.product_id
+    inner join sales_orders o on o.order_id = od.order_id where o.customer_id = 2;  
+    
+--4.What is the total order amount from all orders in the shop before  Feb 10,2018;
+   
+   select sum(sales_orders.order_total) from sales_orders where order_date < '10-FEB-2018'; 
+
+
+--5.Get a detailed order report of customerid 5 about his orders,inlcuding odate,order id,prod id,prod name,prod unit price,product quantity purchased
+select o.order_date, od.order_id,p.product_id, od.quantity,  p.product_name, p.unit_price ,od.quantity from order_details od
+    inner join products p on od.product_id = p.product_id
+    inner join sales_orders o on o.order_id = od.order_id where o.customer_id = 5;   
+    
+-- 6.Get the details of the products  whose name starts with Girl .....
+   select      * from        products where       product_name like 'Girl%';
+
+--  7.Get the total number of items sold per product and  sort by prod_id.
+   select  product_id, sum(quantity) as items_sold from  order_details group by  product_id order by   product_id;
+
+
+ --  8.Get the prod detail of an item which has been ordered most.
+ select * from products where product_id=(select product_id from( select  product_id, sum(quantity) as items_sold from  order_details group by  product_id order by   items_sold desc) where rownum=1);
+
+ 
+ --  9.Get the details of the staff who has assisted most orders.
+   
+ select * from staff where staff_id=(select staff_id from (select count(order_id) as total_orders,staff_id from sales_orders group by staff_id order by total_orders desc)where rownum=1 );
+   
+   --10.Get the email of the customer who has made maximum purchase(cost wise).
+   select email_address from customer where customer_id=(select customer_id from( select max(order_total), customer_id from sales_orders group by customer_id order by   max(order_total) desc)where rownum=1);
+    
+   --11.Get the prod details of items which customers didn't like..(may be no one ordered that!!!)
+   
+   select p.product_name,p.product_id,od.order_id from products p left outer join order_details od on p.product_id=od.product_id where order_id is  null  ;
+   
+  -- 12.Total number of  cusotmers who haven't placed a single order
+  select      count(*) from        customer c left join   sales_orders o on o.customer_id = c.customer_id where  order_id is null;
+
+  
+  -- 13.Get the unique list of email_address from both the staff and customer
+   select email_address from customer
+union
+select email_address from staff;
+   
+  -- 14.What is the average amount of cost of a single product in the store sold.
+   select avg(unit_price) from products;
+   
+  -- 15.Get the number of COMPLETE,PENDING,CANCELLED orders..
+select   count(order_id),order_status  from sales_orders group by    order_status;
