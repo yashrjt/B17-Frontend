@@ -1,0 +1,26 @@
+
+
+
+https://tutorial.techaltum.com/sql-queries-for-practice.html
+
+Get the list of all employees who has been assigned same client and same project.
+
+
+LIst all the client details who do not have any project so far.
+
+What is the max salary earned by a. Permanent employee
+
+Total number of departments have give dept_off on Tuesday
+
+Calculate the average tenure of an employee in a project working with Client Cl1-1
+
+Which country client has the highest number of projects ?
+
+
+List the emp details  along with column denoting Permanent /Temporary depending on IsPermanent column in empsalary table
+
+
+Get the emp name and email of the one who earns second highest salary and also not a permanent employee
+
+
+Get the project id of second least project duration 
